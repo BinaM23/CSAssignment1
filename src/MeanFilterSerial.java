@@ -42,7 +42,7 @@ public class MeanFilterSerial{
             System.out.println("Error processing image.");
             e.printStackTrace();
         }
-        
+        long start = System.currentTimeMillis();        
         if(window%2!=0 && window>=3){   //window must be odd
             int pixelSurround =(window-1)/2; 
             for(int x=0;x<w-window;x++){
@@ -69,7 +69,7 @@ public class MeanFilterSerial{
         else{
             System.exit(0);}
 
-         
+        System.out.println("time: "+(double)(System.currentTimeMillis()-start)/1000); 
         try{
             File out = new File(output); //create image to store output
             ImageIO.write(image,"jpg",out);
