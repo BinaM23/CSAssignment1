@@ -14,8 +14,8 @@ public class  MedianFilterSerial{
    public static void main (String[] args){
        BufferedImage image = null;
        //for testing on jgrasp remove later
-       String input = "apple.jpeg";
-       String output = "output.jpeg";
+       String input = "data/apple.jpeg";
+       String output = "data/output.jpeg";
        int window = 9; //change later
        int w = 0;
        int h =0;
