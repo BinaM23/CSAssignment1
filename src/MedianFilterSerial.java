@@ -43,41 +43,29 @@ public class  MedianFilterSerial{
             System.out.println("Error processing image.");
             e.printStackTrace();
         }
-        
+        long start = System.currentTimeMillis(); //start timing, not including output file
         if(window%2!=0 && window>=3){   //window must be odd
             int pixelSurround =(window-1)/2; 
             for(int x=0;x<w-window;x++){
                 for(int y=pixelSurround;y<h;y++){
-                   // ArrayList<Integer> the_pixels = new ArrayList<>();
-                    ArrayList<Integer> r = new ArrayList<>();
-                    ArrayList<Integer> g = new ArrayList<>();
-                    ArrayList<Integer> b = new ArrayList<>();
-
+                    ArrayList<Integer> the_pixels = new ArrayList<>();
                     for(int column = x;column<=x+window;column++){ 
                         for (int mi = -pixelSurround; mi <= pixelSurround; mi++) { 
                             int ColumnIndex = Math.min(Math.max(mi + y, 0),h - 1);
-                           // the_pixels.add(image.getRGB(column,ColumnIndex));
-                           int pixel = image.getRGB(column,ColumnIndex);
-                           r.add((pixel & 0x00ff0000) >> 16));
-                           g.add((pixel & 0x0000ff00) >> 8));
-                           b.add((pixel & 0x000000ff) >> 0));
+                           the_pixels.add(image.getRGB(column,ColumnIndex));
                         }  
                     }
-                    Collections.sort(r);
-                    Collections.sort(g);
-                    Collections.sort(b);
-                    int red =r.get(r.size()/2); //arraylist sorted
-                    int green=g.get(g.size()/2);
-                    int blue=b.get(b.size()/2);
-                    int dpixel = (0xff000000) |(red << 16) |(green << 8) |(blue << 0);
+                    Collections.sort(the_pixels);
+                    int dpixel = the_pixels.get(the_pixels.size()/2);
                     image.setRGB(x, y,dpixel);
                 }
             }
         }
         else{
             System.exit(0);}
-
-         
+        //print out how long it took
+        //instrumentation
+        System.out.println("Time program took: "+(double)(System.currentTimeMillis()-start)/1000); 
         try{
             File out = new File(output); //create image to store output
             ImageIO.write(image,"jpg",out);
