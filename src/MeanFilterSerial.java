@@ -13,21 +13,21 @@ import java.awt.Color;
 public class MeanFilterSerial{
    public static void main(String[]args){
        BufferedImage image = null;
-      // String input = "data/apple.jpeg"; uncomment for testing without terminal input
-     //  String output = "data/outputMeanS.jpeg";
-     //  int window = 0;
+       String input=null;// = "data/apple.jpeg"; uncomment for testing without terminal input
+       String output=null;// = "data/outputMeanS.jpeg";
+       int window= 0;
        int w = 0;
        int h =0;
         
         if(args.length>0){ //Cmd line input
-            String input = args[0];
-            String output = args[1];
-            int window = Integer.parseInt(args[2]);
+             input = args[0];
+             output = args[1];
+             window = Integer.parseInt(args[2]);
         }
         else{
             
             System.exit(0);
-        }*/
+        }
         try{
             File f = new File(input);
             BufferedImage data = ImageIO.read(f);

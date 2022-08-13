@@ -114,18 +114,18 @@ public class MeanFilterParallel extends RecursiveAction{
       BufferedImage the_image=null;
        //for testing on jgrasp remove later
       // String input = "data/apple.jpeg";
-     // String input = "snap.jpg";
+      String input=null;// = "snap.jpg";
      // String output = "outputMeanParallel.jpeg";
-      // String output = "data/outputMeanPara.jpeg";
+       String output=null;// = "data/outputMeanPara.jpeg";
        int window = 0; //change later to 0
        int w = 0;
        int h =0;
        
        if (args.length>0){
-        String  input=args[0];
-        String  output=args[1];
+         input=args[0];
+         output=args[1];
          window= Integer.parseInt(args[2]);
-         
+        }         
       else
          {
             System.exit(0);

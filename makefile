@@ -18,19 +18,20 @@ CLASSES2= MedianFilterSerial.class\
           MeanFilterParallel.class\
 
 CLASSES=$(CLASSES2:%.class=$(BINDIR)/%.class)
+
 default: $(CLASSES)
 
 medianSerial: $(CLASSES)
 	$(JAVA) -cp $(BINDIR) MedianFilterSerial $(input) $(output) $(window)
 	
 meanSerial: $(CLASSES)
-        $(JAVA) -cp $(BINDIR) MeanFilterSerial $(input) $(output) $(window)
+	$(JAVA) -cp $(BINDIR) MeanFilterSerial $(input) $(output) $(window)
 
 medianParallel: $(CLASSES)
-        $(JAVA) -cp $(BINDIR) MedianFilterParallel $(input) $(output) $(window)
+	$(JAVA) -cp $(BINDIR) MedianFilterParallel $(input) $(output) $(window)
 
 meanParallel: $(CLASSES)
-        $(JAVA) -cp $(BINDIR) MeanFilterParallel $(input) $(output) $(window)
+	$(JAVA) -cp $(BINDIR) MeanFilterParallel $(input) $(output) $(window)
 
 
 clean:
