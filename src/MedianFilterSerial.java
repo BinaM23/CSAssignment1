@@ -15,8 +15,8 @@ public class  MedianFilterSerial{
        BufferedImage image = null;
        //for testing on jgrasp remove later
        String input = "data/apple.jpeg";
-       String output = "data/output.jpeg";
-       int window = 9; //change later
+       String output = "data/outputMedianS.jpeg";
+       int window = 3; //change later
        int w = 0;
        int h =0;
         
@@ -65,7 +65,7 @@ public class  MedianFilterSerial{
             System.exit(0);}
         //print out how long it took
         //instrumentation
-        System.out.println("Time program took: "+(double)(System.currentTimeMillis()-start)/1000); 
+       System.out.println("execution time: "+(double)(System.currentTimeMillis()-start)/1000+"s for image width: "+w+" height: "+h+" window: "+window);  
         try{
             File out = new File(output); //create image to store output
             ImageIO.write(image,"jpg",out);

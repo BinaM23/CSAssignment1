@@ -14,9 +14,9 @@ public class MeanFilterSerial{
    public static void main(String[]args){
        BufferedImage image = null;
        //for testing on jgrasp remove later
-       String input = "data/snap.jpg";
-       String output = "data/output.jpeg";
-       int window = 9; //change later
+       String input = "data/apple.jpeg";
+       String output = "data/outputMeanS.jpeg";
+       int window = 3; //change later
        int w = 0;
        int h =0;
         
@@ -69,7 +69,7 @@ public class MeanFilterSerial{
         else{
             System.exit(0);}
 
-        System.out.println("time: "+(double)(System.currentTimeMillis()-start)/1000); 
+       System.out.println("execution time: "+(double)(System.currentTimeMillis()-start)/1000+"s for image width: "+w+" height: "+h+" window: "+window);  
         try{
             File out = new File(output); //create image to store output
             ImageIO.write(image,"jpg",out);

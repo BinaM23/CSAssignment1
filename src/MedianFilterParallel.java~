@@ -13,7 +13,7 @@ import java.util.concurrent.RecursiveAction;
 *A class to implement median filter
 *@author Bina Mukuyamba
 */
-public class MeanFilterParallel extends RecursiveAction{
+public class MedianFilterParallel extends RecursiveAction{
 
    /**
    *Constructor to instantiate class
@@ -29,7 +29,7 @@ public class MeanFilterParallel extends RecursiveAction{
        int Sequential_cutoff=1000000; //experiment
        int PixelSurround;
        
-   public MeanFilterParallel(int Xdis, int Ydis, int image_w, int image_h, int Window, BufferedImage image){
+   public MedianFilterParallel(int Xdis, int Ydis, int image_w, int image_h, int Window, BufferedImage image){
       the_image = image;
       Xoff = Xdis;
       Yoff = Ydis;
@@ -44,37 +44,31 @@ public class MeanFilterParallel extends RecursiveAction{
    
    /**
    *Do calculation in this thread
-   *uses the serial code
+   *
    */
    public void computeDirect(){
    
        for(int x=Xoff;x<(w-window)+Xoff;x++){
                 for(int y=PixelSurround+Yoff;y<h+Yoff;y++){
-                    float r=0;
-                    float g=0; 
-                    float b=0;
-            
+                    ArrayList<Integer> the_pixels = new ArrayList<>();
                     for(int column = x;column<=x+window;column++){ 
                         for (int mi = -PixelSurround; mi <= PixelSurround; mi++) { 
                             int ColumnIndex = Math.min(Math.max(mi + y, 0),Yoff+h - 1);
-                            //the_pixels.add(the_image.getRGB(column,ColumnIndex));
-                             int pixel=the_image.getRGB(column,ColumnIndex);
-                              r += (float)((pixel & 0x00ff0000) >> 16)/(window*window);
-                              g += (float)((pixel & 0x0000ff00) >>  8)/(window*window);
-                              b += (float)((pixel & 0x000000ff) >>  0)/(window*window);
+                            the_pixels.add(the_image.getRGB(column,ColumnIndex));
                           
                         }  
                     }
-                    int dpixel=0;   
-                    dpixel=(0xff000000) |((int)r << 16) |((int)g << 8) |((int)b << 0);
-                    the_image.setRGB(x, y,dpixel);                }
+                    Collections.sort(the_pixels);
+                    int dpixel = the_pixels.get(the_pixels.size()/2);
+                    the_image.setRGB(x, y,dpixel);
+                }
             } //end of outer loop
    
    
    }
 
    /**
-   *equivalent to running a thread
+   *equivaleent to running a thread
    *
    */
    public void compute(){
@@ -87,8 +81,8 @@ public class MeanFilterParallel extends RecursiveAction{
          else{
             int SplitRow = (int)Math.floor((double)w/2);
             int SplitCol = (int)Math.floor((double)h/2);
-            MeanFilterParallel left = new MeanFilterParallel(0,0,SplitRow,SplitCol,window,the_image);
-            MeanFilterParallel right = new MeanFilterParallel(SplitRow,SplitCol,w-SplitRow,h-SplitCol,window,the_image);
+            MedianFilterParallel left = new MedianFilterParallel(0,0,SplitRow,SplitCol,window,the_image);
+            MedianFilterParallel right = new MedianFilterParallel(SplitRow,SplitCol,w-SplitRow,h-SplitCol,window,the_image);
             left.fork();
             right.compute();
             left.join();         
@@ -113,11 +107,11 @@ public class MeanFilterParallel extends RecursiveAction{
             
       BufferedImage the_image=null;
        //for testing on jgrasp remove later
-       String input = "data/apple.jpeg";
-     // String input = "snap.jpg";
-     // String output = "outputMeanParallel.jpeg";
-       String output = "data/outputMeanPara.jpeg";
-       int window = 3; //change later to 0
+      // String input = "data/apple.jpeg";
+      String input = "snap.jpg";
+      String output = "outputMedianParallel.jpeg";
+       // String output = "data/output.jpeg";
+       int window = 9; //change later to 0
        int w = 0;
        int h =0;
        
@@ -148,7 +142,7 @@ public class MeanFilterParallel extends RecursiveAction{
 
 
             
-            MeanFilterParallel mfp = new MeanFilterParallel(0,0,w,h,window,the_image);
+            MedianFilterParallel mfp = new MedianFilterParallel(0,0,w,h,window,the_image);
             ForkJoinPool thread_pool = new ForkJoinPool();
             long start = System.currentTimeMillis();
             thread_pool.invoke(mfp);
