@@ -65,7 +65,7 @@ public class  MedianFilterSerial{
             System.exit(0);}
         //print out how long it took
         //instrumentation
-        System.out.println("Time program took: "+(double)(System.currentTimeMillis()-start)/1000); 
+       System.out.println("execution time: "+(double)(System.currentTimeMillis()-start)/1000+"s for image width: "+w+" height: "+h+" window: "+window);  
         try{
             File out = new File(output); //create image to store output
             ImageIO.write(image,"jpg",out);

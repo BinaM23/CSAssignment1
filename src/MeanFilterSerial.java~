@@ -69,7 +69,7 @@ public class MeanFilterSerial{
         else{
             System.exit(0);}
 
-        System.out.println("time: "+(double)(System.currentTimeMillis()-start)/1000); 
+       System.out.println("execution time: "+(double)(System.currentTimeMillis()-start)/1000+"s for image width: "+w+" height: "+h+" window: "+window);  
         try{
             File out = new File(output); //create image to store output
             ImageIO.write(image,"jpg",out);

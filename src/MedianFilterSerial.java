@@ -14,13 +14,13 @@ public class  MedianFilterSerial{
    public static void main (String[] args){
        BufferedImage image = null;
        //for testing on jgrasp remove later
-       String input = "data/apple.jpeg";
-       String output = "data/outputMedianS.jpeg";
-       int window = 3; //change later
+      // String input = "data/apple.jpeg";
+      // String output = "data/outputMedianS.jpeg";
+      // int window = 3; //change later
        int w = 0;
        int h =0;
         
-      /*  if(args.length>0){ //args need to make sense
+        if(args.length>0){ //args need to make sense
             String input = args[0];
             String output = args[1];
             int window = Integer.parseInt(args[2]);

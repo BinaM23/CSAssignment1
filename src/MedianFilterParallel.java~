@@ -107,11 +107,11 @@ public class MedianFilterParallel extends RecursiveAction{
             
       BufferedImage the_image=null;
        //for testing on jgrasp remove later
-      // String input = "data/apple.jpeg";
-      String input = "snap.jpg";
-      String output = "outputMedianParallel.jpeg";
-       // String output = "data/output.jpeg";
-       int window = 9; //change later to 0
+       String input = "data/apple.jpeg";
+     // String input = "snap.jpg";
+     // String output = "outputMedianParallel.jpeg";
+        String output = "data/MedianParallelOutput.jpeg";
+       int window = 3; //change later to 0
        int w = 0;
        int h =0;
        
