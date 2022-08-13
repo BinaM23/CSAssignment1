@@ -1,0 +1,33 @@
+0: commit 56c6e2c3f7e07bbdc2094af87b9f4676a57c8c8c
+1: Author: Bina Mukuyamba <mukuyambab@gmail.com>
+2: Date: Sat Aug 13 00:22:13 2022 +0200
+3:
+4: timing on the mean
+5:
+6: commit f90ff82faa8edf2421b4219d93dbd86bcaf77172
+7: Author: Bina Mukuyamba <mukuyambab@gmail.com>
+8: Date: Sat Aug 13 00:07:16 2022 +0200
+9:
+10: more effiecient median filter
+11:
+12: commit 4eea408978585d83f64ab2360107bb16176af1e0
+13: Author: Bina Mukuyamba <mukuyambab@gmail.com>
+14: Date: Fri Aug 12 22:48:54 2022 +0200
+15:
+16: changed median filter serial
+17:
+18: commit 1c66bcb10759ab94d19086b42de63cba4b4d64c7
+19: Author: Bina Mukuyamba <mukuyambab@gmail.com>
+...
+23:
+24: commit b9a5c344db2eda125ca76ae630a564f6b0293381
+25: Author: Bina Mukuyamba <mukuyambab@gmail.com>
+26: Date: Wed Aug 10 23:35:07 2022 +0200
+27:
+28: created makefile and sub folders
+29:
+30: commit 978584dec6ee44d04d5085894c61c824ae9387a6
+31: Author: Bina Mukuyamba <mukuyambab@gmail.com>
+32: Date: Tue Aug 9 21:34:18 2022 +0200
+33:
+34: serial programs first version
